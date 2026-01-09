@@ -4,22 +4,25 @@ const amount = document.getElementById("amount");
 const next = document.getElementById("next");
 const inr = document.getElementById("inr");
 
+const RATE = 83;
+
 address.addEventListener("focus", () => {
   addressBox.classList.add("focused");
 });
 
 address.addEventListener("blur", () => {
-  if (!address.value.trim()) {
-    addressBox.classList.remove("focused");
-  }
+  if (!address.value.trim()) addressBox.classList.remove("focused");
 });
 
 function update() {
-  inr.textContent = amount.value
-    ? (amount.value * 83).toFixed(2)
-    : "0.00";
+  const usdt = parseFloat(amount.value);
+  if (!isNaN(usdt) && usdt > 0) {
+    inr.textContent = (usdt * RATE).toFixed(2);
+  } else {
+    inr.textContent = "0.00";
+  }
 
-  if (address.value && amount.value) {
+  if (address.value.trim() && usdt > 0) {
     next.classList.add("enabled");
     next.disabled = false;
   } else {
