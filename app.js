@@ -1,31 +1,36 @@
-const address = document.getElementById("address");
-const amount = document.getElementById("amount");
-const next = document.getElementById("next");
-const max = document.getElementById("max");
+const addressInput = document.getElementById("address");
+const addressBox = document.getElementById("addressBox");
+const amountInput = document.getElementById("amount");
+const nextBtn = document.getElementById("next");
 const inr = document.getElementById("inr");
 
-function update() {
-  if (amount.value) {
-    max.classList.add("active");
-    inr.textContent = (amount.value * 83).toFixed(2);
+// Address focus behavior (green border on touch)
+addressInput.addEventListener("focus", () => {
+  addressBox.classList.add("focused");
+});
+
+addressInput.addEventListener("blur", () => {
+  if (!addressInput.value.trim()) {
+    addressBox.classList.remove("focused");
+  }
+});
+
+// Enable Next + INR calc
+function updateUI() {
+  if (amountInput.value) {
+    inr.textContent = (amountInput.value * 83).toFixed(2);
   } else {
-    max.classList.remove("active");
     inr.textContent = "0.00";
   }
 
-  if (address.value && amount.value) {
-    next.classList.add("enabled");
-    next.disabled = false;
+  if (addressInput.value && amountInput.value) {
+    nextBtn.classList.add("enabled");
+    nextBtn.disabled = false;
   } else {
-    next.classList.remove("enabled");
-    next.disabled = true;
+    nextBtn.classList.remove("enabled");
+    nextBtn.disabled = true;
   }
 }
 
-amount.addEventListener("input", update);
-address.addEventListener("input", update);
-
-max.onclick = () => {
-  amount.value = "100";
-  update();
-};
+addressInput.addEventListener("input", updateUI);
+amountInput.addEventListener("input", updateUI);
