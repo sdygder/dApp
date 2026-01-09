@@ -1,26 +1,29 @@
 const address = document.getElementById("address");
 const addressBox = document.getElementById("addressBox");
 const amount = document.getElementById("amount");
+const amountBox = document.getElementById("amountBox");
 const next = document.getElementById("next");
 const inr = document.getElementById("inr");
 
 const RATE = 83;
 
-address.addEventListener("focus", () => {
-  addressBox.classList.add("focused");
-});
+[address, amount].forEach((input) => {
+  const box = input === address ? addressBox : amountBox;
 
-address.addEventListener("blur", () => {
-  if (!address.value.trim()) addressBox.classList.remove("focused");
+  input.addEventListener("focus", () => {
+    box.classList.add("focused");
+  });
+
+  input.addEventListener("blur", () => {
+    if (!input.value.trim()) box.classList.remove("focused");
+  });
 });
 
 function update() {
   const usdt = parseFloat(amount.value);
-  if (!isNaN(usdt) && usdt > 0) {
-    inr.textContent = (usdt * RATE).toFixed(2);
-  } else {
-    inr.textContent = "0.00";
-  }
+
+  inr.textContent =
+    !isNaN(usdt) && usdt > 0 ? (usdt * RATE).toFixed(2) : "0.00";
 
   if (address.value.trim() && usdt > 0) {
     next.classList.add("enabled");
