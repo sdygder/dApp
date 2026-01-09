@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>BSC dApp | Connect Wallet</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Ethers -->
+  <script src="https://cdn.jsdelivr.net/npm/ethers@6.8.1/dist/ethers.umd.min.js"></script>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <div class="card">
+      <h1>🔗 Connect Wallet</h1>
+      <p class="subtitle">BNB Smart Chain dApp</p>
+
+      <button id="connectBtn">Connect Trust Wallet</button>
+
+      <div id="walletInfo" class="hidden">
+        <p><strong>Address</strong></p>
+        <p id="address" class="mono"></p>
+
+        <p><strong>Network</strong></p>
+        <p id="network"></p>
+      </div>
+    </div>
+  </div>
+  <div id="qrcode"></div>
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+  <script>
+    new QRCode(document.getElementById("qrcode"), {
+      text: "https://link.trustwallet.com/open_url?coin_id=56&url=https://1c060a21-ef98-4fd0-af71-11ef3c0e26ad-00-wzwvveqw873m.sisko.replit.dev/",
+      width: 200,
+      height: 200
+    });
+  </script>
+
+  <script src="app.js"></script>
+</body>
+</html>
