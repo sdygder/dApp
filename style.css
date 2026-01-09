@@ -1,5 +1,5 @@
 :root {
-  --bg-main: #0B0C0E;
+  --bg-main: #404040;
   --bg-soft: #15171A;
   --text-grey: #8B8F97;
   --text-white: #FFFFFF;
@@ -13,25 +13,9 @@
 
 body {
   margin: 0;
-  background: radial-gradient(
-    ellipse at top,
-    #1A1B1D 0%,
-    var(--bg-main) 60%
-  );
+  background-color: #404040;
   color: var(--text-white);
   min-height: 100vh;
-}
-
-/* Header */
-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 16px;
-}
-
-.back {
-  font-size: 22px;
 }
 
 h1 {
@@ -41,7 +25,7 @@ h1 {
 
 /* Layout */
 .container {
-  padding: 20px;
+  padding: 10px;
 }
 
 label {
