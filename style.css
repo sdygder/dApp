@@ -1,5 +1,5 @@
 :root {
-  --bg-main: #282828;
+  --bg-main: #202020;
   --bg-soft: #15171A;
   --text-grey: #8B8F97;
   --text-white: #FFFFFF;
@@ -13,7 +13,7 @@
 
 body {
   margin: 0;
-  background-color: #282828;
+  background-color: #202020;
   color: var(--text-white);
   min-height: 100vh;
 }
