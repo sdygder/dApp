@@ -1,60 +1,40 @@
-const connectBtn = document.getElementById("connectBtn");
-const walletInfo = document.getElementById("walletInfo");
-const addressEl = document.getElementById("address");
-const networkEl = document.getElementById("network");
+const address = document.getElementById("address");
+const amount = document.getElementById("amount");
+const nextBtn = document.getElementById("next");
+const max = document.getElementById("max");
 
-const BSC_PARAMS = {
-  chainId: "0x38",
-  chainName: "BNB Smart Chain",
-  nativeCurrency: {
-    name: "BNB",
-    symbol: "BNB",
-    decimals: 18
-  },
-  rpcUrls: ["https://bsc-dataseed.binance.org/"],
-  blockExplorerUrls: ["https://bscscan.com"]
-};
+function updateUI() {
+  // Address field
+  if (address.value.trim()) {
+    address.classList.add("filled");
+  } else {
+    address.classList.remove("filled");
+  }
 
-async function switchToBSC() {
-  try {
-    await window.ethereum.request({
-      method: "wallet_switchEthereumChain",
-      params: [{ chainId: "0x38" }]
-    });
-  } catch (err) {
-    if (err.code === 4902) {
-      await window.ethereum.request({
-        method: "wallet_addEthereumChain",
-        params: [BSC_PARAMS]
-      });
-    } else {
-      throw err;
-    }
+  // Amount field
+  if (amount.value.trim()) {
+    amount.classList.add("filled");
+    max.classList.add("active");
+  } else {
+    amount.classList.remove("filled");
+    max.classList.remove("active");
+  }
+
+  // Enable Next button
+  if (address.value.trim() && amount.value.trim()) {
+    nextBtn.classList.add("enabled");
+    nextBtn.disabled = false;
+  } else {
+    nextBtn.classList.remove("enabled");
+    nextBtn.disabled = true;
   }
 }
 
-connectBtn.onclick = async () => {
-  if (!window.ethereum) {
-    alert("Please open this dApp in Trust Wallet or MetaMask");
-    return;
-  }
+address.addEventListener("input", updateUI);
+amount.addEventListener("input", updateUI);
 
-  try {
-    await switchToBSC();
-
-    const provider = new ethers.BrowserProvider(window.ethereum);
-    const signer = await provider.getSigner();
-    const address = await signer.getAddress();
-    const network = await provider.getNetwork();
-
-    addressEl.textContent = address;
-    networkEl.textContent = network.chainId === 56n ? "BNB Smart Chain" : "Wrong Network";
-
-    walletInfo.classList.remove("hidden");
-    connectBtn.textContent = "Wallet Connected ✅";
-
-  } catch (err) {
-    console.error(err);
-    alert("Wallet connection failed");
-  }
-};
+// Demo Max click
+max.addEventListener("click", () => {
+  amount.value = "100";
+  updateUI();
+});
