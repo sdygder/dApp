@@ -19,13 +19,6 @@ body {
   min-height: 100vh;
 }
 
-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 16px;
-}
-
 .back {
   font-size: 22px;
 }
@@ -36,7 +29,7 @@ h1 {
 }
 
 .container {
-  padding: 20px;
+  padding: 15px;
 }
 
 label {
@@ -54,8 +47,8 @@ label {
   height: 56px;
   background: var(--box);
   border-radius: 16px;
-  padding-left: 18px;
-  padding-right: 14px;
+  padding-left: 10px;
+  padding-right: 10px;
   display: flex;
   align-items: center;
   gap: 12px;
