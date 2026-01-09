@@ -1,37 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>BSC dApp | Connect Wallet</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Ethers -->
-  <script src="https://cdn.jsdelivr.net/npm/ethers@6.8.1/dist/ethers.umd.min.js"></script>
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wallet UI</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div class="container">
-    <div class="card">
-      <h1>Connect Wallet</h1>
-      <p class="subtitle">BNB Smart Chain dApp</p>
+<div class="container">
 
-      <button id="connectBtn">Connect Trust Wallet</button>
-
-      <div id="walletInfo" class="hidden">
-        <p><strong>Address</strong></p>
-        <p id="address" class="mono"></p>
-
-        <p><strong>Network</strong></p>
-        <p id="network"></p>
-      </div>
-    </div>
+  <label>Address or Domain Name</label>
+  <div class="input-box">
+    <input id="address" placeholder=" " />
+    <span id="paste">Paste</span>
   </div>
 
-  <script src="app.js"></script>
+  <label class="mt">Amount</label>
+  <div class="input-box">
+    <input id="amount" placeholder=" " />
+    <span id="max">USDT <b>Max</b></span>
+  </div>
+
+</div>
+
+<button id="next" class="next-btn" disabled>Next</button>
+
+<script src="script.js"></script>
 </body>
 </html>
