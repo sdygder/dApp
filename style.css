@@ -1,9 +1,9 @@
 :root {
-  --bg-main: #181818;
-  --bg-soft: #15171A;
-  --text-grey: #8B8F97;
-  --text-white: #FFFFFF;
-  --tw-green: #1AFF7C;
+  --bg: #181818;
+  --box: #1f1f1f;
+  --grey: #9a9a9a;
+  --white: #ffffff;
+  --green: #1aff7c;
 }
 
 * {
@@ -13,9 +13,21 @@
 
 body {
   margin: 0;
-  background-color: #181818;
-  color: var(--text-white);
+  background: var(--bg);
+  color: var(--white);
   min-height: 100vh;
+}
+
+/* HEADER */
+header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+}
+
+.back {
+  font-size: 22px;
 }
 
 h1 {
@@ -23,14 +35,14 @@ h1 {
   margin: 0;
 }
 
-/* Layout */
+/* LAYOUT */
 .container {
-  padding: 10px;
+  padding: 20px;
 }
 
 label {
+  color: var(--grey);
   font-size: 14px;
-  color: var(--text-grey);
 }
 
 .mt {
@@ -38,94 +50,108 @@ label {
   display: block;
 }
 
-/* Input box */
+/* INPUT BOX */
 .input-box {
   margin-top: 8px;
-  background: var(--bg-soft);
+  height: 56px;
+  background: var(--box);
   border-radius: 14px;
-  padding: 14px;
+  padding: 0 14px;
   display: flex;
   align-items: center;
   gap: 12px;
   border: 2px solid transparent;
-  transition: border 0.15s ease;
 }
 
 .input-box.focused {
-  border-color: var(--tw-green);
+  border-color: var(--green);
 }
 
 .input-box input {
   flex: 1;
+  height: 100%;
   background: transparent;
   border: none;
   outline: none;
   font-size: 16px;
-  color: var(--text-white);
+  color: var(--white);
 }
 
 .input-box input::placeholder {
-  color: var(--text-grey);
+  color: var(--grey);
 }
 
-/* Actions */
+/* ACTION ICONS */
 .actions {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 .paste {
-  color: var(--tw-green);
+  color: var(--green);
   font-weight: 500;
 }
 
-.usdt {
-  color: var(--text-grey);
+svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: var(--green);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
-.max {
-  color: var(--tw-green);
-  font-weight: 500;
-}
-
-/* Network pill */
+/* NETWORK */
 .pill {
   margin-top: 8px;
-  background: var(--bg-soft);
+  background: var(--box);
   border-radius: 999px;
   padding: 10px 14px;
   display: inline-flex;
   align-items: center;
+  gap: 8px;
   font-size: 14px;
 }
 
-/* Price */
+.bnb {
+  width: 18px;
+  height: 18px;
+  fill: #f3ba2f;
+  stroke: none;
+}
+
+/* AMOUNT */
+.usdt {
+  color: var(--grey);
+}
+
+.max {
+  color: var(--green);
+  font-weight: 500;
+}
+
 .price {
   margin-top: 10px;
   color: #cfcfcf;
 }
 
-/* Button */
+/* BUTTON */
 button {
   position: fixed;
   left: 20px;
   right: 20px;
   bottom: 20px;
-  padding: 16px;
-  font-size: 18px;
+  height: 56px;
   border-radius: 999px;
   border: none;
-  background: var(--tw-green);
-  color: #002B18;
-  opacity: 0.3;
+  font-size: 18px;
+  background: #2d7a4b;
+  color: #0b1f14;
+  opacity: 0.4;
 }
 
 button.enabled {
   opacity: 1;
-}
-
-/* Icons */
-svg {
-  stroke: var(--tw-green);
 }
