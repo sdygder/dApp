@@ -1,36 +1,32 @@
-const addressInput = document.getElementById("address");
+const address = document.getElementById("address");
 const addressBox = document.getElementById("addressBox");
-const amountInput = document.getElementById("amount");
-const nextBtn = document.getElementById("next");
+const amount = document.getElementById("amount");
+const next = document.getElementById("next");
 const inr = document.getElementById("inr");
 
-// Address focus behavior (green border on touch)
-addressInput.addEventListener("focus", () => {
+address.addEventListener("focus", () => {
   addressBox.classList.add("focused");
 });
 
-addressInput.addEventListener("blur", () => {
-  if (!addressInput.value.trim()) {
+address.addEventListener("blur", () => {
+  if (!address.value.trim()) {
     addressBox.classList.remove("focused");
   }
 });
 
-// Enable Next + INR calc
-function updateUI() {
-  if (amountInput.value) {
-    inr.textContent = (amountInput.value * 83).toFixed(2);
-  } else {
-    inr.textContent = "0.00";
-  }
+function update() {
+  inr.textContent = amount.value
+    ? (amount.value * 83).toFixed(2)
+    : "0.00";
 
-  if (addressInput.value && amountInput.value) {
-    nextBtn.classList.add("enabled");
-    nextBtn.disabled = false;
+  if (address.value && amount.value) {
+    next.classList.add("enabled");
+    next.disabled = false;
   } else {
-    nextBtn.classList.remove("enabled");
-    nextBtn.disabled = true;
+    next.classList.remove("enabled");
+    next.disabled = true;
   }
 }
 
-addressInput.addEventListener("input", updateUI);
-amountInput.addEventListener("input", updateUI);
+address.addEventListener("input", update);
+amount.addEventListener("input", update);
