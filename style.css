@@ -1,19 +1,33 @@
+:root {
+  --bg-main: #0B0C0E;
+  --bg-soft: #15171A;
+  --text-grey: #8B8F97;
+  --text-white: #FFFFFF;
+  --tw-green: #1AFF7C;
+}
+
 * {
-  font-family: Inter, system-ui, sans-serif;
   box-sizing: border-box;
+  font-family: Inter, system-ui, -apple-system, sans-serif;
 }
 
 body {
   margin: 0;
-  background: #0c0d0f;
-  color: #fff;
+  background: radial-gradient(
+    ellipse at top,
+    #1A1B1D 0%,
+    var(--bg-main) 60%
+  );
+  color: var(--text-white);
+  min-height: 100vh;
 }
 
+/* Header */
 header {
-  padding: 16px;
   display: flex;
   align-items: center;
   gap: 12px;
+  padding: 16px;
 }
 
 .back {
@@ -22,15 +36,17 @@ header {
 
 h1 {
   font-size: 18px;
+  margin: 0;
 }
 
+/* Layout */
 .container {
   padding: 20px;
 }
 
 label {
-  color: #8b8f97;
   font-size: 14px;
+  color: var(--text-grey);
 }
 
 .mt {
@@ -38,88 +54,94 @@ label {
   display: block;
 }
 
+/* Input box */
 .input-box {
   margin-top: 8px;
-  background: #15171a;
+  background: var(--bg-soft);
   border-radius: 14px;
   padding: 14px;
   display: flex;
   align-items: center;
-  border: 1.5px solid transparent;
+  gap: 12px;
+  border: 2px solid transparent;
+  transition: border 0.15s ease;
 }
 
-.input-box.active {
-  border-color: #1aff7c;
+.input-box.focused {
+  border-color: var(--tw-green);
 }
 
-input {
+.input-box input {
   flex: 1;
   background: transparent;
   border: none;
   outline: none;
-  color: white;
-  font-size: 15px;
+  font-size: 16px;
+  color: var(--text-white);
 }
 
-input::placeholder {
-  color: #8b8f97;
+.input-box input::placeholder {
+  color: var(--text-grey);
 }
 
-.icons {
+/* Actions */
+.actions {
   display: flex;
-  gap: 10px;
   align-items: center;
+  gap: 10px;
 }
 
-.green {
-  color: #1aff7c;
+.paste {
+  color: var(--tw-green);
+  font-weight: 500;
 }
 
-.icon {
-  font-size: 18px;
+.usdt {
+  color: var(--text-grey);
 }
 
+.max {
+  color: var(--tw-green);
+  font-weight: 500;
+}
+
+/* Network pill */
 .pill {
   margin-top: 8px;
-  background: #15171a;
+  background: var(--bg-soft);
   border-radius: 999px;
   padding: 10px 14px;
   display: inline-flex;
-  gap: 8px;
   align-items: center;
+  font-size: 14px;
 }
 
-.pill img {
-  width: 18px;
-}
-
-#max {
-  color: #8b8f97;
-}
-
-#max.active {
-  color: #1aff7c;
-}
-
+/* Price */
 .price {
   margin-top: 10px;
   color: #cfcfcf;
 }
 
+/* Button */
 button {
   position: fixed;
-  bottom: 20px;
   left: 20px;
   right: 20px;
-  border-radius: 999px;
+  bottom: 20px;
   padding: 16px;
   font-size: 18px;
+  border-radius: 999px;
   border: none;
-  background: #1aff7c;
-  color: #002b18;
+  background: var(--tw-green);
+  color: #002B18;
   opacity: 0.3;
 }
 
 button.enabled {
   opacity: 1;
+}
+
+/* Icons */
+svg {
+  stroke: var(--tw-green);
 }
