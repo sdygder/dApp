@@ -2,7 +2,6 @@
   --bg: #181818;
   --box: #1f1f1f;
   --grey: #9a9a9a;
-  --grey-border: #3a3a3a;
   --white: #ffffff;
   --green: #1aff7c;
 }
@@ -52,20 +51,22 @@ label {
 .input-box {
   margin-top: 8px;
   height: 56px;
-  background: var(--box);
+  background: linear-gradient(#1f1f1f, #1f1f1f) padding-box,
+              linear-gradient(#3f3f3f, #3f3f3f) border-box;
   border-radius: 16px;
+  border: 2px solid transparent;
   padding-left: 18px;
   padding-right: 14px;
   display: flex;
   align-items: center;
   gap: 12px;
-  border: 2px solid var(--grey-border);
   overflow: hidden;
-  transition: border-color 0.15s ease;
+  transition: background 0.15s ease;
 }
 
 .input-box.focused {
-  border-color: var(--green);
+  background: linear-gradient(#1f1f1f, #1f1f1f) padding-box,
+              linear-gradient(#1aff7c, #1aff7c) border-box;
 }
 
 .input-box input {
@@ -108,7 +109,7 @@ svg {
 
 .pill {
   margin-top: 8px;
-  background: var(--box);
+  background: #1f1f1f;
   border-radius: 999px;
   padding: 10px 14px;
   display: inline-flex;
