@@ -1,40 +1,31 @@
 const address = document.getElementById("address");
 const amount = document.getElementById("amount");
-const nextBtn = document.getElementById("next");
+const next = document.getElementById("next");
 const max = document.getElementById("max");
+const inr = document.getElementById("inr");
 
-function updateUI() {
-  // Address field
-  if (address.value.trim()) {
-    address.classList.add("filled");
-  } else {
-    address.classList.remove("filled");
-  }
-
-  // Amount field
-  if (amount.value.trim()) {
-    amount.classList.add("filled");
+function update() {
+  if (amount.value) {
     max.classList.add("active");
+    inr.textContent = (amount.value * 83).toFixed(2);
   } else {
-    amount.classList.remove("filled");
     max.classList.remove("active");
+    inr.textContent = "0.00";
   }
 
-  // Enable Next button
-  if (address.value.trim() && amount.value.trim()) {
-    nextBtn.classList.add("enabled");
-    nextBtn.disabled = false;
+  if (address.value && amount.value) {
+    next.classList.add("enabled");
+    next.disabled = false;
   } else {
-    nextBtn.classList.remove("enabled");
-    nextBtn.disabled = true;
+    next.classList.remove("enabled");
+    next.disabled = true;
   }
 }
 
-address.addEventListener("input", updateUI);
-amount.addEventListener("input", updateUI);
+amount.addEventListener("input", update);
+address.addEventListener("input", update);
 
-// Demo Max click
-max.addEventListener("click", () => {
+max.onclick = () => {
   amount.value = "100";
-  updateUI();
-});
+  update();
+};
