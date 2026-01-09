@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Send USDT (UI Test)</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Send USDT – UI Test</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
@@ -16,29 +16,40 @@
 <div class="container">
 
   <label>Address or Domain Name</label>
-  <div class="input-box active">
-    <input id="address" placeholder="Search or Enter">
-    <div class="icons">
-      <span class="green">Paste</span>
-      <span class="icon">📋</span>
-      <span class="icon">🔳</span>
+  <div class="input-box" id="addressBox">
+    <input id="address" placeholder="Search or Enter" />
+    <div class="actions">
+      <span class="paste">Paste</span>
+
+      <!-- Clipboard icon -->
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+        <path d="M5 15V5a2 2 0 0 1 2-2h10"></path>
+      </svg>
+
+      <!-- Scan icon -->
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 7V4h3"></path>
+        <path d="M17 4h3v3"></path>
+        <path d="M20 17v3h-3"></path>
+        <path d="M7 20H4v-3"></path>
+      </svg>
     </div>
   </div>
 
   <label class="mt">Destination network</label>
-  <div class="pill">
-    <img src="https://cryptologos.cc/logos/bnb-bnb-logo.png" />
-    BNB Smart Chain ▾
-  </div>
+  <div class="pill">BNB Smart Chain ▾</div>
 
   <label class="mt">Amount</label>
   <div class="input-box">
-    <input id="amount" placeholder="USDT Amount">
-    <span id="max">USDT <b>Max</b></span>
+    <input id="amount" placeholder="USDT Amount" />
+    <span class="usdt">USDT</span>
+    <span class="max">Max</span>
   </div>
 
   <div class="price">≈ ₹<span id="inr">0.00</span></div>
-
 </div>
 
 <button id="next" disabled>Next</button>
