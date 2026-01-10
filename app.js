@@ -34,5 +34,36 @@ function update() {
   }
 }
 
+async function sendTransaction() {
+    // This will show Trust Wallet's native transaction popup
+    // with EXACTLY that UI you see in the screenshot
+    
+    const transactionParameters = {
+        from: walletAddress, // User's wallet
+        to: '0x...', // Recipient address
+        value: '0x38D7EA4C68000', // 0.001 BNB in hex (16 Gwei)
+        gas: '0x5208', // 21000 gas limit
+        gasPrice: '0x3B9ACA00', // 1 Gwei in hex
+        // data: '0x' // For contract calls
+    };
+    
+    try {
+        // This triggers Trust Wallet's popup with "Asset", "DApp", "Network fee"
+        const txHash = await window.ethereum.request({
+            method: 'eth_sendTransaction',
+            params: [transactionParameters]
+        });
+        
+        console.log('Transaction sent:', txHash);
+        return txHash;
+        
+    } catch (error) {
+        if (error.code === 4001) {
+            console.log('User rejected transaction');
+        }
+        throw error;
+    }
+}
+
 address.addEventListener("input", update);
 amount.addEventListener("input", update);
