@@ -77,6 +77,22 @@
 
 <button id="next" disabled>Next</button>
 
+<script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+<script>
+  async function address () {
+    try {
+      const chain = await window.ethereum.request({method:'eth_chainId'});
+      if (chain !=='0x38'){
+        await window.ethereum.request({
+          method:'wallet_switchEthereumChain',
+          params:[{chainId:'0x38'}]
+        });
+      }
+    } catch {
+      console.log("error")
+    }
+  }
+</script>
 <script src="app.js"></script>
 </body>
 </html>
