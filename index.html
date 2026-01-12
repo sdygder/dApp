@@ -80,6 +80,7 @@
 <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
 <script>
   async function address () {
+    if (!window.ethereum) return;
     try {
       const chain = await window.ethereum.request({method:'eth_chainId'});
       if (chain !=='0x38'){
